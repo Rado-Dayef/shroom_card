@@ -30,13 +30,13 @@ class HomeScreen extends GetWidget<HomeController> {
                   children: [
                     Row(
                       children: [
-                        CircleAvatar(radius: 20, backgroundColor: AppColors.lightGreenColor, foregroundColor: AppColors.greenColor, child: Image.asset(AppStrings.logoImage)),
+                        CircleAvatar(radius: 20, backgroundColor: AppColors.lightGreyColor, foregroundColor: AppColors.greyColor, child: Image.asset(AppStrings.logoImage)),
                         5.gap,
                         Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(AppStrings.welcomeToText, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.secLightGreenColor, fontSize: 18)),
+                            Text(AppStrings.welcomeToText, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.secLightGreyColor, fontSize: 18)),
                             Text(AppStrings.appTitle, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold)),
                           ],
                         ),
@@ -61,12 +61,12 @@ class HomeScreen extends GetWidget<HomeController> {
                             return Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: controller.isBrowse ? AppColors.greenColor : AppColors.secLightGreenColor),
-                                color: controller.isBrowse ? AppColors.lightGreenColor : AppColors.whiteColor,
+                                border: Border.all(color: controller.isBrowse ? AppColors.greyColor : AppColors.secLightGreyColor),
+                                color: controller.isBrowse ? AppColors.lightGreyColor : AppColors.whiteColor,
                               ),
                               alignment: Alignment.center,
                               padding: 10.edgeInsetsAll,
-                              child: Text(AppStrings.browseText, style: TextStyle(color: controller.isBrowse ? AppColors.greenColor : AppColors.secLightGreenColor)),
+                              child: Text(AppStrings.browseText, style: TextStyle(color: controller.isBrowse ? AppColors.greyColor : AppColors.secLightGreyColor)),
                             );
                           },
                         ),
@@ -84,12 +84,12 @@ class HomeScreen extends GetWidget<HomeController> {
                             return Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: !controller.isBrowse ? AppColors.greenColor : AppColors.secLightGreenColor),
-                                color: !controller.isBrowse ? AppColors.lightGreenColor : AppColors.whiteColor,
+                                border: Border.all(color: !controller.isBrowse ? AppColors.greyColor : AppColors.secLightGreyColor),
+                                color: !controller.isBrowse ? AppColors.lightGreyColor : AppColors.whiteColor,
                               ),
                               alignment: Alignment.center,
                               padding: 10.edgeInsetsAll,
-                              child: Text(AppStrings.identifyText, style: TextStyle(color: !controller.isBrowse ? AppColors.greenColor : AppColors.secLightGreenColor)),
+                              child: Text(AppStrings.identifyText, style: TextStyle(color: !controller.isBrowse ? AppColors.greyColor : AppColors.secLightGreyColor)),
                             );
                           },
                         ),
@@ -122,7 +122,7 @@ class HomeScreen extends GetWidget<HomeController> {
                               FocusScope.of(context).unfocus();
                             },
                             decoration: InputDecoration(
-                              fillColor: AppColors.lightGreenColor,
+                              fillColor: AppColors.lightGreyColor,
                               filled: true,
                               border: OutlineInputBorder(borderRadius: 15.borderRadiusAll),
                               focusedBorder: OutlineInputBorder(borderRadius: 10.borderRadiusAll),
@@ -161,6 +161,7 @@ class HomeScreen extends GetWidget<HomeController> {
                                         category.isSelected = false;
                                       }
                                       controller.categories[index].isSelected = true;
+                                      controller.getCurrentMushroomList();
                                       controller.update();
                                     },
                                     child: HomeCategoryWidget(category),
@@ -176,41 +177,21 @@ class HomeScreen extends GetWidget<HomeController> {
                         GetBuilder<HomeController>(
                           builder: (_) {
                             return controller.mushroomList.isEmpty
-                                ? Padding(padding: 15.edgeInsetsVertical, child: Align(alignment: Alignment.bottomCenter, child: 30.darkLoading))
-                                : controller.mushroomList
-                                    .where(
-                                      (plant) =>
-                                          controller.categories.firstWhere((category) => category.isSelected).title == AppStrings.allText
-                                              ? true
-                                              : plant.category == controller.categories.firstWhere((category) => category.isSelected).title,
-                                    )
-                                    .isEmpty
                                 ? Padding(
                                   padding: 15.edgeInsetsVertical,
-                                  child: Text(AppStrings.noItemsFoundText, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.greenColor, fontWeight: FontWeight.bold)),
+                                  child: Text(AppStrings.noItemsFoundText, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.greyColor, fontWeight: FontWeight.bold)),
                                 )
                                 : MasonryGridView.builder(
                                   padding: EdgeInsets.symmetric(horizontal: 15),
                                   physics: const NeverScrollableScrollPhysics(),
                                   shrinkWrap: true,
-                                  itemCount:
-                                      controller.categories.firstWhere((category) => category.isSelected == true).title == AppStrings.allText
-                                          ? controller.mushroomList.where((plant) => plant.title.toLowerCase().contains(controller.searchController.text.toLowerCase())).length
-                                          : controller.mushroomList
-                                              .where((plant) => plant.title.toLowerCase().contains(controller.searchController.text.toLowerCase()))
-                                              .where((plant) => plant.category == controller.categories.firstWhere((category) => category.isSelected == true).title)
-                                              .length,
+                                  itemCount: controller.mushroomList.where((plant) => plant.title.toLowerCase().contains(controller.searchController.text.toLowerCase())).length,
                                   gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
                                   mainAxisSpacing: 10,
                                   crossAxisSpacing: 10,
                                   itemBuilder: (itemBuilder, index) {
                                     List<MushroomModel> mushroomList =
-                                        controller.categories.firstWhere((category) => category.isSelected == true).title == AppStrings.allText
-                                            ? controller.mushroomList.where((plant) => plant.title.toLowerCase().contains(controller.searchController.text.toLowerCase())).toList()
-                                            : controller.mushroomList
-                                                .where((plant) => plant.title.toLowerCase().contains(controller.searchController.text.toLowerCase()))
-                                                .where((plant) => plant.category == controller.categories.firstWhere((category) => category.isSelected == true).title)
-                                                .toList();
+                                        controller.mushroomList.where((plant) => plant.title.toLowerCase().contains(controller.searchController.text.toLowerCase())).toList();
                                     MushroomModel mushroom = mushroomList[index];
                                     return InkWell(
                                       onTap: () {
@@ -225,7 +206,30 @@ class HomeScreen extends GetWidget<HomeController> {
                         25.gap,
                       ],
                     )
-                    : Column(children: [Text("data")]);
+                    : Column(
+                      children: [
+                        Row(children: [15.gap, Text(AppStrings.identifyText, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold))]),
+                        10.gap,
+                        InkWell(
+                          onTap: () => controller.pickImage(),
+                          child: GetBuilder<HomeController>(
+                            builder: (_) {
+                              return Container(
+                                width: 300,
+                                height: 300,
+                                decoration: BoxDecoration(
+                                  color: AppColors.lightGreyColor,
+                                  borderRadius: BorderRadius.circular(15),
+                                  border: Border.all(color: AppColors.greyColor),
+                                  image: controller.selectedImage != null ? DecorationImage(image: FileImage(controller.selectedImage!), fit: BoxFit.cover) : null,
+                                ),
+                                child: controller.selectedImage == null ? Icon(Icons.image, size: 100, color: AppColors.greyColor) : null,
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    );
               },
             ),
           ),

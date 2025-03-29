@@ -13,14 +13,14 @@ class HomeCategoryWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 2, horizontal: 15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: category.isSelected ? AppColors.greenColor : AppColors.secLightGreenColor),
-        color: category.isSelected ? AppColors.lightGreenColor : AppColors.whiteColor,
+        border: Border.all(color: category.isSelected ? AppColors.greyColor : AppColors.secLightGreyColor),
+        color: category.isSelected ? AppColors.lightGreyColor : AppColors.whiteColor,
       ),
       child: Text(
         category.title,
         style: Theme.of(
           context,
-        ).textTheme.bodyMedium?.copyWith(color: category.isSelected ? AppColors.greenColor : AppColors.secLightGreenColor, fontSize: 18, fontWeight: category.isSelected ? FontWeight.bold : null),
+        ).textTheme.bodyMedium?.copyWith(color: category.isSelected ? AppColors.greyColor : AppColors.secLightGreyColor, fontSize: 18, fontWeight: category.isSelected ? FontWeight.bold : null),
       ),
     );
   }

@@ -113,6 +113,7 @@ class AppStrings {
   static const String passwordText = "Password";
   static const String myPlantsText = "My Plants";
   static const String newCairoText = "New Cairo";
+  static const String nonEdibleText = "Non Edible";
   static const String welcomeToText = "Welcome to";
   static const String goAsGuestText = "Go as Guest";
   static const String signedOutText = "Signed out.";
@@ -121,6 +122,7 @@ class AppStrings {
   static const String searchHereText = "Search Here";
   static const String addToCartText = "Add To Cart!";
   static const String descriptionText = "Description";
+  static const String medicalUsesText = "Medical Uses";
   static const String unknownErrorText = "Unknown error";
   static const String noItemsFoundText = "No items found";
   static const String resetPasswordText = "Reset Password";

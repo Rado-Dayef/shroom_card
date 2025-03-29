@@ -8,7 +8,7 @@ class AppThemeData {
     splashColor: AppColors.transparentColor,
     highlightColor: AppColors.transparentColor,
     scaffoldBackgroundColor: AppColors.whiteColor,
-    appBarTheme: AppBarTheme(elevation: 0, foregroundColor: AppColors.whiteColor, backgroundColor: AppColors.greenColor, surfaceTintColor: AppColors.greenColor),
+    appBarTheme: AppBarTheme(elevation: 0, foregroundColor: AppColors.whiteColor, backgroundColor: AppColors.greyColor, surfaceTintColor: AppColors.greyColor),
     textTheme: const TextTheme(
       bodyLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppColors.blackColor),
       labelLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: AppColors.blackColor),

@@ -15,9 +15,9 @@ class HomeLibraryPlantWidget extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
-          color: AppColors.lightGreenColor,
+          color: AppColors.lightGreyColor,
           borderRadius: BorderRadius.circular(15),
-          boxShadow: [BoxShadow(color: AppColors.secLightGreenColor, offset: const Offset(0, 0), blurRadius: 8, spreadRadius: 1)],
+          boxShadow: [BoxShadow(color: AppColors.secLightGreyColor, offset: const Offset(0, 0), blurRadius: 8, spreadRadius: 1)],
         ),
         child: Stack(
           alignment: Alignment.topRight,
@@ -38,7 +38,7 @@ class HomeLibraryPlantWidget extends StatelessWidget {
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 2, horizontal: 5),
                         decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
-                        child: Text(mushroom.category, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold, color: AppColors.secLightGreenColor)),
+                        child: Text(mushroom.category, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold, color: AppColors.secLightGreyColor)),
                       ),
                     ],
                   ),

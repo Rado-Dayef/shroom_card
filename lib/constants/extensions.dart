@@ -5,7 +5,7 @@ import 'package:shroom_card/constants/colors.dart';
 
 extension NumbersExt on num {
   /// Loading.
-  Widget get darkLoading => LoadingAnimationWidget.staggeredDotsWave(size: toDouble(), color: AppColors.greenColor);
+  Widget get darkLoading => LoadingAnimationWidget.staggeredDotsWave(size: toDouble(), color: AppColors.greyColor);
 
   Widget get lightLoading => LoadingAnimationWidget.staggeredDotsWave(size: toDouble(), color: AppColors.whiteColor);
 

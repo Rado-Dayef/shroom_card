@@ -20,9 +20,9 @@ class SplashScreen extends GetWidget<SplashController> {
             children: [
               Image.asset(AppStrings.logoImage, width: 200, height: 200),
               25.gap,
-              const Text(AppStrings.appTitle, style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: AppColors.greenColor)),
+              const Text(AppStrings.appTitle, style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: AppColors.greyColor)),
               5.gap,
-              const Text(AppStrings.appSubTitle, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.greenColor)),
+              const Text(AppStrings.appSubTitle, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.greyColor)),
               50.gap,
             ],
           ),

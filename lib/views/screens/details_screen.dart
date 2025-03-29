@@ -12,7 +12,7 @@ class DetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     MushroomModel mushroomFromArguments = Get.arguments;
     return Scaffold(
-      backgroundColor: AppColors.lightGreenColor,
+      backgroundColor: AppColors.lightGreyColor,
       body: SafeArea(
         child: CustomScrollView(
           physics: const NeverScrollableScrollPhysics(),
@@ -42,7 +42,7 @@ class DetailsScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          InkWell(onTap: Get.back, child: CircleAvatar(backgroundColor: AppColors.secLightGreenColor, child: Icon(Icons.arrow_back_ios_new, color: AppColors.whiteColor, size: 20))),
+                          InkWell(onTap: Get.back, child: CircleAvatar(backgroundColor: AppColors.secLightGreyColor, child: Icon(Icons.arrow_back_ios_new, color: AppColors.whiteColor, size: 20))),
                         ],
                       ),
                     ),
@@ -70,15 +70,19 @@ class DetailsScreen extends StatelessWidget {
                         15.gap,
                         Text(AppStrings.categoryText, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold)),
                         5.gap,
-                        Text(mushroomFromArguments.category, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.secLightGreenColor, fontSize: 18)),
+                        Text(mushroomFromArguments.category, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.secLightGreyColor, fontSize: 18)),
                         15.gap,
-                        Text(AppStrings.categoryText, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold)),
+                        Text(AppStrings.edibleText, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold)),
                         5.gap,
-                        Text(mushroomFromArguments.edible, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.secLightGreenColor, fontSize: 18)),
+                        Text(mushroomFromArguments.edible, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.secLightGreyColor, fontSize: 18)),
+                        15.gap,
+                        Text(AppStrings.medicalUsesText, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold)),
+                        5.gap,
+                        Text(mushroomFromArguments.medicalUses, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.secLightGreyColor, fontSize: 18)),
                         15.gap,
                         Text(AppStrings.aboutPlantText, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold)),
                         5.gap,
-                        Text(mushroomFromArguments.description, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.secLightGreenColor, fontSize: 18)),
+                        Text(mushroomFromArguments.description, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.secLightGreyColor, fontSize: 18)),
                         25.gap,
                       ],
                     ),
