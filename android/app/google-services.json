@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "739170127010",
+    "project_id": "shroomcard-7a698",
+    "storage_bucket": "shroomcard-7a698.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:739170127010:android:e3eb8ca426e3ce57dd5bfb",
+        "android_client_info": {
+          "package_name": "com.example.shroom_card"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA15NqanRfCj0LWApsefKvBeAg-rZ8MpR4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

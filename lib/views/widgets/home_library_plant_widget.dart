@@ -26,7 +26,7 @@ class HomeLibraryPlantWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(padding: 10.edgeInsetsHorizontal, child: Center(child: Hero(tag: mushroom.image, child: ClipRRect(borderRadius: 15.borderRadiusAll, child: Image.asset(mushroom.image))))),
+                Padding(padding: 10.edgeInsetsHorizontal, child: Center(child: Hero(tag: mushroom.image, child: ClipRRect(borderRadius: 15.borderRadiusAll, child: Image.network(mushroom.image))))),
                 5.gap,
                 Padding(padding: EdgeInsets.symmetric(horizontal: 10), child: Text(mushroom.title, style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold))),
                 5.gap,

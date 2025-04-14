@@ -33,7 +33,7 @@ class DetailsScreen extends StatelessWidget {
                         tag: mushroomFromArguments.image,
                         child: ClipRRect(
                           borderRadius: 15.borderRadiusAll,
-                          child: Image.asset(mushroomFromArguments.image, width: double.infinity, height: MediaQuery.of(context).size.height * 0.6, fit: BoxFit.cover),
+                          child: Image.network(mushroomFromArguments.image, width: double.infinity, height: MediaQuery.of(context).size.height * 0.6, fit: BoxFit.cover),
                         ),
                       ),
                     ),
