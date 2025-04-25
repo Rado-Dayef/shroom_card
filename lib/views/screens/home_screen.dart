@@ -228,6 +228,64 @@ class HomeScreen extends GetWidget<HomeController> {
                             },
                           ),
                         ),
+                        20.gap,
+                        GetBuilder<HomeController>(
+                          builder: (_) {
+                            return controller.selectedImage != null
+                                ? Column(
+                                    children: [
+                                      ElevatedButton(
+                                        onPressed: controller.isIdentifying ? null : () => controller.identifyMushroom(),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: AppColors.greyColor,
+                                          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                        ),
+                                        child: controller.isIdentifying
+                                            ? SizedBox(height: 20, width: 20, child: CircularProgressIndicator(color: AppColors.whiteColor, strokeWidth: 2))
+                                            : Text('Identify Mushroom', style: TextStyle(color: AppColors.whiteColor)),
+                                      ),
+                                      20.gap,
+                                      if (controller.identificationResult != null && !controller.identificationResult!.containsKey('error'))
+                                        Container(
+                                          width: double.infinity,
+                                          margin: EdgeInsets.symmetric(horizontal: 15),
+                                          padding: EdgeInsets.all(15),
+                                          decoration: BoxDecoration(
+                                            color: AppColors.lightGreyColor,
+                                            borderRadius: BorderRadius.circular(10),
+                                            border: Border.all(color: AppColors.greyColor),
+                                          ),
+                                          child: Column(
+                                            crossAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text('Identification Results:', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                                              10.gap,
+                                              Text('Mushroom Type: ${controller.getIdentifiedMushroomLabel() ?? "Unknown"}', 
+                                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+                                              15.gap,
+                                              Text('Confidence Levels:', style: TextStyle(fontWeight: FontWeight.bold)),
+                                              10.gap,
+                                              if (controller.getConfidenceList() != null)
+                                                ...controller.getConfidenceList()!.map((confidence) => Padding(
+                                                  padding: EdgeInsets.only(bottom: 5),
+                                                  child: Row(
+                                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    children: [
+                                                      Text(confidence['label'] ?? 'Unknown'),
+                                                      Text('${(confidence['confidence'] * 100).toStringAsFixed(1)}%'),
+                                                    ],
+                                                  ),
+                                                )).toList(),
+                                            ],
+                                          ),
+                                        ),
+                                    ],
+                                  )
+                                : SizedBox();
+                          },
+                        ),
+                        30.gap,
                       ],
                     );
               },
